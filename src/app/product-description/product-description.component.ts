@@ -9,12 +9,13 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./product-description.component.css']
 })
 export class ProductDescriptionComponent implements OnInit {
-  private albumInfo: Observable<Response>;
+  albumInfo;
 
-  constructor(productService: ProductService) { }
+  constructor(private _productService: ProductService) { }
 
   ngOnInit() {
-    // this.albumInfo = this.productService.getAlbum();
+    this._productService.getAlbum(1)
+    .subscribe((response) => this.albumInfo = response);
   }
 
 }
